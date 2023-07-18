@@ -34,9 +34,10 @@ export class ReptileResolvers {
   @Mutation(() => Reptile)
   async createReptile(
     @Arg("reptile") reptile: CreateReptileInput,
+    @Arg("categoryId") categoryId  : number
   ): Promise<Reptile> {
-    console.log(reptile);
-    return await reptileServices.create(reptile);
+    console.log(reptile)
+    return await reptileServices.create(reptile, categoryId);
   }
 
   @Mutation(() => Reptile)
@@ -46,6 +47,12 @@ export class ReptileResolvers {
   ): Promise<Reptile> {
     return await reptileServices.addToCategory(name, categoryName);
   }
+
+//   @Query(()=> [Reptile])
+// async getReptileByCategoryId(
+//   @Arg('categoryId') categoryId: number
+// ): Promise<Reptile[]>{
+//   return await reptileServices.getReptilesByCategory(categoryId)
 
   @Query(() => [Reptile])
   async getAnimalsByCategory(
@@ -99,3 +106,6 @@ export class ReptileResolvers {
         }
     }
 }
+
+
+
