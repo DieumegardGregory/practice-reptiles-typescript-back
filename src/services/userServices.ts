@@ -16,7 +16,8 @@ export default {
 
   create: async (
     email: string,
-    password: string
+    password: string,
+
   ): Promise<User> => {
     const newUser = new User();
     newUser.email = email;

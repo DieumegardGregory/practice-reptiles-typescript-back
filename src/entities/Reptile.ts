@@ -40,13 +40,17 @@ export class Reptile {
   @Column()
   quantity!: number;
 
+  @Field()
+  @Column()
+  photoId!: string
+
   @Field(() => Upkeep)
   @OneToOne(() => Upkeep, (upkeep) => upkeep.reptileId, { cascade: true, onUpdate: "CASCADE", eager: true })
   @JoinColumn({ name: "upkeep_id"})
   upkeep?: Upkeep;
 
   @Field(() => Category)
-  @ManyToOne(() => Category, (category) => category.reptiles, {onDelete: "CASCADE"})
+  @ManyToOne(() => Category, (category) => category.reptiles, {cascade: ["insert"]})
   @JoinColumn({ name: "category_id" })
   category?: Category;
 
