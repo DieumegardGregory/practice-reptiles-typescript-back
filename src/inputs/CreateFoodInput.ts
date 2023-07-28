@@ -11,7 +11,4 @@ export class CreateFoodInput {
 
     @Field()
     foodPrice!: number;
-
-    @Field()
-    foodPicture!: string;
 }

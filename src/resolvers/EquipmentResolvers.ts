@@ -8,9 +8,10 @@ export class EquipmentResolvers {
     @Mutation(() => Equipment)
   async createEquipment(
     @Arg("equipment") equipment: CreateEquipmentInput,
+    @Arg("equipmentPicture") equipmentPicture: string,
   ): Promise<Equipment> {
     try {
-      const newEquipment = await equipmentServices.create(equipment);
+      const newEquipment = await equipmentServices.create(equipment, equipmentPicture);
       return newEquipment;
     } catch (err: any) {
       throw new Error(err.message);

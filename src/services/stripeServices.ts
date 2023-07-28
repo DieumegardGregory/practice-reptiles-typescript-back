@@ -4,7 +4,7 @@ dotenv.config();
 const stripe = require("stripe")(process.env.STRIPE_TEST_SECRET_KEY);
 
 export default {
-    createPaymentSheet: async (amount: string) => {
+    createPaymentSheet: async (amount: number) => {
         const customer =  await stripe.customers.create();
         const ephemeralKey = await stripe.ephemeralKeys.create(
             {customer: customer.id},

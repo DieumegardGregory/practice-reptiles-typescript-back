@@ -19,7 +19,7 @@ export class StripeResolvers {
     //@Authorized()
     @Mutation(() => Payment)
     async createPaymentSession(
-        @Arg("amount") amount: string
+        @Arg("amount") amount: number
     ): Promise<Object> {
         try {
             let paymentSheetDetails = await stripeServices.createPaymentSheet(amount);

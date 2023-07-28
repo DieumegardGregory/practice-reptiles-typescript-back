@@ -3,6 +3,7 @@ import { dataSource } from "../tools/utils";
 import { Food } from "../entities/Food";
 import { reptileRepository } from "./reptileServices";
 import { categoryRepository } from "./categoryServices";
+import { CreateFoodInput } from "../inputs/CreateFoodInput";
 
 export const foodRepository: Repository<Food> = dataSource.getRepository(Food);
 
@@ -19,8 +20,13 @@ enum PreyFood {
 }
 
 export default {
-    create: async (food: Food): Promise<Food> => {
-        return await foodRepository.save(food);
+    create: async (food: CreateFoodInput, foodPicture: string): Promise<Food> => {
+        const newFood = new Food();
+        newFood.foodName = food.foodName;
+        newFood.foodCategory = food.foodCategory;
+        newFood.foodPrice = food.foodPrice;
+        newFood.foodPicture = foodPicture;
+        return await foodRepository.save(newFood);
       },
     
     getAll: async (): Promise<Food[]> => {

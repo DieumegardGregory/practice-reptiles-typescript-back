@@ -5,13 +5,20 @@ import { Category, CategoryName } from "../entities/Category";
 import { categoryRepository } from "./categoryServices";
 import { upkeepRepository } from "./upkeepServices";
 import { Upkeep } from "../entities/Upkeep";
+import { CreateReptileInput } from "../inputs/CreateReptileInput";
 
 export const reptileRepository: Repository<Reptile> =
   dataSource.getRepository(Reptile);
 
 export default {
-  create: async (reptile: Reptile): Promise<Reptile> => {
-    return await reptileRepository.save(reptile);
+  create: async (reptile: CreateReptileInput, animalPicture: string): Promise<Reptile> => {
+    const newReptile = new Reptile();
+    newReptile.name = reptile.name;
+    newReptile.scientificName = reptile.scientificName;
+    newReptile.quantity = reptile.quantity;
+    newReptile.price = reptile.price;
+    newReptile.animalPicture = animalPicture;
+    return await reptileRepository.save(newReptile);
   },
 
   getAll: async (): Promise<Reptile[]> => {

@@ -8,8 +8,9 @@ export class FoodResolvers {
     @Mutation(() => Food)
   async createFood(
     @Arg("food") food: CreateFoodInput,
+    @Arg("foodPicture") foodPicture: string,
   ): Promise<Food> {
-    return await foodServices.create(food);
+    return await foodServices.create(food,foodPicture);
   }
 
     @Query(() => [Food])
