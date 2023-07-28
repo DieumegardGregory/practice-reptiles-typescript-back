@@ -7,6 +7,7 @@ import {
     JoinTable
 } from "typeorm";
 import { Reptile } from "./Reptile";
+import { Order } from "./Order";
 
 @ObjectType()
 @Entity()
@@ -31,8 +32,8 @@ export class Food {
   @Column({ nullable: true})
   foodPicture!: string;
 
-  @Field(() => Reptile)
-  @ManyToMany(() => Reptile, (reptile) => reptile.food, { eager: true })
+  @Field(() => Order)
+  @ManyToMany(() => Food, (food) => food.order)
   @JoinTable()
-  reptiles?: Reptile;
+  order!: Order;
 }

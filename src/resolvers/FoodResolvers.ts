@@ -10,7 +10,7 @@ export class FoodResolvers {
     @Arg("food") food: CreateFoodInput,
     @Arg("foodPicture") foodPicture: string,
   ): Promise<Food> {
-    return await foodServices.create(food,foodPicture);
+    return await foodServices.create(food, foodPicture);
   }
 
     @Query(() => [Food])

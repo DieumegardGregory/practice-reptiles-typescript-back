@@ -54,10 +54,6 @@ export class Reptile {
   @JoinColumn({ name: "category_id" })
   category?: Category;
 
-  @ManyToMany(() => Food, (food) => food.reptiles, {onDelete: "CASCADE"})
-  @JoinColumn({ name: "food_id"})
-  food?: Food;
-
   @ManyToMany(() => Order, (order) => order.reptileId)
   order?: Order;
 }

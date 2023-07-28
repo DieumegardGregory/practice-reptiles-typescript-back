@@ -7,9 +7,10 @@ export class CategoryResolvers {
     @Mutation(() => Category)
     async createCategory(
         @Arg("categoryName") categoryName: CategoryName,
+        @Arg("categoryImage") categoryImage: string,
     ): Promise<Category> {
         try {
-            let newCategory: Category = await categoryServices.create(categoryName);
+            let newCategory: Category = await categoryServices.create(categoryName, categoryImage);
             return newCategory;
         } catch (err: any) {
             throw new Error("Erreur en créant la catégorie");
