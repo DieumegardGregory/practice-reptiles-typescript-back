@@ -44,7 +44,11 @@ export class Upkeep {
 
   @Field()
   @Column({ nullable: true })
-  hygrometry!: string;
+  humidity!: string;
+  
+  @Field()
+  @Column({ nullable: true })
+  mores!: string;
 
   @Field()
   @Column({ nullable: true })

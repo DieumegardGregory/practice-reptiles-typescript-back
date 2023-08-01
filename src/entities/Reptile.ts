@@ -50,7 +50,7 @@ export class Reptile {
   upkeep?: Upkeep;
 
   @Field(() => Category)
-  @ManyToOne(() => Category, (category) => category.reptiles, {onDelete: "CASCADE"})
+  @ManyToOne(() => Category, (category) => category.reptiles, { cascade: true})
   @JoinColumn({ name: "category_id" })
   category?: Category;
 

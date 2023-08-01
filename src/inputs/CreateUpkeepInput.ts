@@ -17,7 +17,10 @@ export class CreateUpkeepInput {
     dayCycle!: string;
 
     @Field({ nullable: true })
-    hygrometry!: string;
+    humidity!: string;
+
+    @Field({ nullable: true })
+    mores!: string;
 
     @Field({ nullable: true })
     dayTemperature!: string;

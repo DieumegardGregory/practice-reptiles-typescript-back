@@ -33,11 +33,12 @@ export class ReptileResolvers {
 
   @Mutation(() => Reptile)
   async createReptile(
+    @Arg("categoryId") categoryId: number,
     @Arg("reptile") reptile: CreateReptileInput,
     @Arg("animalPicture") animalPicture: string,
   ): Promise<Reptile> {
     console.log(reptile);
-    return await reptileServices.create(reptile, animalPicture);
+    return await reptileServices.create(categoryId, reptile, animalPicture);
   }
 
   @Mutation(() => Reptile)

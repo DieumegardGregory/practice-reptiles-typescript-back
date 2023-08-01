@@ -11,13 +11,16 @@ export const reptileRepository: Repository<Reptile> =
   dataSource.getRepository(Reptile);
 
 export default {
-  create: async (reptile: CreateReptileInput, animalPicture: string): Promise<Reptile> => {
+  create: async (categoryId: number, reptile: CreateReptileInput, animalPicture: string): Promise<Reptile> => {
+    const relatedCategory = await categoryRepository.findOneByOrFail({ id: categoryId });
     const newReptile = new Reptile();
     newReptile.name = reptile.name;
     newReptile.scientificName = reptile.scientificName;
+    newReptile.description = reptile.description;
     newReptile.quantity = reptile.quantity;
     newReptile.price = reptile.price;
     newReptile.animalPicture = animalPicture;
+    newReptile.category = relatedCategory;
     return await reptileRepository.save(newReptile);
   },
 
